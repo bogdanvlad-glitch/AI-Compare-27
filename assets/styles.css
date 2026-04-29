@@ -1,0 +1,710 @@
+:root {
+  --bg: #f4efe6;
+  --paper: #fbf7f0;
+  --ink: #1f1a17;
+  --muted: #6e6358;
+  --line: rgba(31, 26, 23, 0.12);
+  --accent: #bf5a36;
+  --accent-deep: #8e3f22;
+  --olive: #3f5649;
+  --sand: #d7c1a1;
+  --shadow: 0 24px 60px rgba(31, 26, 23, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(191, 90, 54, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(63, 86, 73, 0.12), transparent 30%),
+    var(--bg);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-shell {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 20px;
+  backdrop-filter: blur(18px);
+  background: rgba(244, 239, 230, 0.78);
+  border-bottom: 1px solid rgba(31, 26, 23, 0.08);
+}
+
+.brand {
+  display: grid;
+  gap: 2px;
+}
+
+.brand-kicker,
+.eyebrow,
+.section-tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-deep);
+  font-weight: 800;
+}
+
+.brand-name {
+  font-family: "Fraunces", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.site-nav a {
+  position: relative;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+.site-nav a.active,
+.site-nav a:hover {
+  color: var(--ink);
+}
+
+.site-nav a.active::after,
+.site-nav a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.menu-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line);
+  background: rgba(251, 247, 240, 0.85);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--ink);
+  margin: 6px 0;
+}
+
+.hero {
+  position: relative;
+  min-height: calc(100svh - 84px);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+}
+
+.hero-media,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-home .hero-media {
+  background:
+    linear-gradient(120deg, rgba(15, 12, 10, 0.55), rgba(15, 12, 10, 0.05)),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Louvain-la-Neuve%20-%20Esplanade.jpg")
+      center/cover no-repeat;
+  transform: scale(1.06);
+  animation: slow-pan 18s ease-out forwards;
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(15, 12, 10, 0.18) 0%, rgba(15, 12, 10, 0.76) 100%),
+    linear-gradient(90deg, rgba(15, 12, 10, 0.78) 0%, rgba(15, 12, 10, 0.14) 62%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 0 0 72px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Fraunces", serif;
+  line-height: 1.02;
+  margin: 0;
+}
+
+h1 {
+  max-width: 9.5ch;
+  font-size: clamp(3.2rem, 8vw, 6.8rem);
+  margin-top: 16px;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+  color: inherit;
+}
+
+.hero-copy {
+  max-width: 620px;
+  margin-top: 24px;
+  font-size: 1.08rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.hero-copy.compact {
+  color: var(--muted);
+}
+
+.hero-actions,
+.footer-grid,
+.story-grid,
+.gallery-layout,
+.intro-grid,
+.split-band,
+.editorial-columns,
+.practical-grid {
+  display: grid;
+}
+
+.hero-actions {
+  grid-template-columns: repeat(2, max-content);
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.button-secondary {
+  background: rgba(255, 255, 255, 0.14);
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.subpage-main {
+  padding: 28px 0 0;
+}
+
+.page-hero {
+  padding: 72px 0 24px;
+}
+
+.page-hero h1 {
+  max-width: 12ch;
+  color: var(--ink);
+}
+
+.intro-grid,
+.gallery-layout,
+.split-band,
+.editorial-columns,
+.practical-grid {
+  gap: 32px;
+}
+
+.intro-grid,
+.split-band,
+.editorial-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 88px 0 24px;
+}
+
+.lead-block {
+  display: grid;
+  gap: 18px;
+  color: var(--muted);
+}
+
+.stats-band {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  padding: 42px 0 24px;
+}
+
+.stats-band article,
+.category-card,
+.info-panel,
+.feature-panel,
+.quote-band,
+.source-note {
+  background: rgba(251, 247, 240, 0.8);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.stats-band article {
+  border-radius: 8px;
+  padding: 26px;
+}
+
+.stat-value {
+  display: block;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  color: var(--accent-deep);
+}
+
+.stat-label {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.story-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 70px 0 24px;
+}
+
+.feature-panel {
+  padding: 34px;
+  border-radius: 8px;
+}
+
+.warm-panel {
+  background: linear-gradient(180deg, rgba(215, 193, 161, 0.34), rgba(251, 247, 240, 0.92));
+}
+
+.feature-panel p:not(.section-tag) {
+  margin-top: 16px;
+  color: var(--muted);
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--accent-deep);
+  font-weight: 800;
+}
+
+.gallery-layout {
+  grid-template-columns: 0.92fr 1.08fr;
+  align-items: start;
+  padding: 82px 0 24px;
+}
+
+.gallery-copy {
+  position: sticky;
+  top: 110px;
+}
+
+.gallery-copy p:last-child {
+  margin-top: 18px;
+  color: var(--muted);
+}
+
+.gallery-stack,
+.category-grid,
+.panorama-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.gallery-stack {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "esplanade esplanade"
+    "place lake";
+}
+
+.photo-card,
+.panorama-card {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow);
+}
+
+.photo-card::before,
+.panorama-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+  transition: transform 220ms ease;
+}
+
+.photo-card::after,
+.panorama-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 12, 10, 0.06), rgba(15, 12, 10, 0.62));
+}
+
+.photo-card:hover::before,
+.panorama-card:hover::before {
+  transform: scale(1.06);
+}
+
+.photo-card figcaption,
+.panorama-card figcaption {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1;
+  color: white;
+  font-weight: 700;
+}
+
+.photo-esplanade {
+  grid-area: esplanade;
+}
+
+.photo-esplanade::before {
+  background-image:
+    linear-gradient(135deg, rgba(191, 90, 54, 0.12), rgba(0, 0, 0, 0)),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Louvain-la-Neuve%20-%20Esplanade.jpg");
+}
+
+.photo-grand-place::before {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Louvain-la-Neuve%20-%20Grand-Place%20%285%29.jpg");
+}
+
+.photo-lake::before {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Louvain-la-Neuve%20Lac.JPG");
+}
+
+.photo-station::before {
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Louvain-la-Neuve%20Gare.jpg");
+}
+
+.cta-band {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 84px 0;
+}
+
+.cta-band p:last-child {
+  margin-top: 16px;
+  color: var(--muted);
+}
+
+.site-footer {
+  margin-top: 70px;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  background: rgba(251, 247, 240, 0.5);
+}
+
+.footer-grid {
+  grid-template-columns: 1.3fr 0.8fr 1fr;
+  gap: 26px;
+}
+
+.footer-grid a,
+.footer-grid p {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.footer-title {
+  color: var(--ink) !important;
+  font-weight: 800;
+  margin-bottom: 14px !important;
+}
+
+.category-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 46px 0 24px;
+}
+
+.category-card,
+.info-panel {
+  padding: 28px;
+  border-radius: 8px;
+}
+
+.category-card span {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--accent-deep);
+  margin-bottom: 12px;
+}
+
+.category-card p,
+.info-panel p:not(.section-tag) {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.chips-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chips-cloud span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(191, 90, 54, 0.09);
+  border: 1px solid rgba(191, 90, 54, 0.16);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.editorial-columns,
+.list-block,
+.timeline,
+.practical-grid,
+.source-note,
+.quote-band,
+.panorama-grid {
+  padding: 70px 0 24px;
+}
+
+.bullet-lines {
+  display: grid;
+  gap: 18px;
+}
+
+.bullet-lines p {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.panorama-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.panorama-grid .large {
+  grid-row: span 2;
+  min-height: 560px;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.timeline-item {
+  padding: 22px;
+  border-top: 3px solid var(--accent);
+  background: rgba(251, 247, 240, 0.58);
+}
+
+.timeline-item span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-deep);
+  font-weight: 800;
+}
+
+.timeline-item p {
+  color: var(--muted);
+}
+
+.quote-band {
+  padding-bottom: 10px;
+}
+
+.quote-band p {
+  padding: 30px;
+  border-left: 4px solid var(--accent);
+  font-family: "Fraunces", serif;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  line-height: 1.25;
+}
+
+.practical-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.source-note,
+.quote-band {
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.source-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes slow-pan {
+  from {
+    transform: scale(1.08) translateY(0);
+  }
+  to {
+    transform: scale(1.02) translateY(-10px);
+  }
+}
+
+@media (max-width: 980px) {
+  .intro-grid,
+  .story-grid,
+  .gallery-layout,
+  .split-band,
+  .editorial-columns,
+  .cta-band,
+  .footer-grid,
+  .practical-grid,
+  .panorama-grid,
+  .category-grid,
+  .timeline,
+  .stats-band {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-copy {
+    position: static;
+  }
+
+  .panorama-grid .large {
+    min-height: 320px;
+  }
+
+  .source-note {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    padding-inline: 16px;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 16px;
+    left: 16px;
+    display: none;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(251, 247, 240, 0.98);
+    box-shadow: var(--shadow);
+  }
+
+  .site-nav.open {
+    display: grid;
+    gap: 14px;
+  }
+
+  .site-nav a.active::after,
+  .site-nav a:hover::after {
+    display: none;
+  }
+
+  .hero {
+    min-height: calc(100svh - 78px);
+  }
+
+  .hero-content {
+    padding-bottom: 44px;
+  }
+
+  h1 {
+    max-width: 12ch;
+  }
+
+  .hero-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-stack {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "esplanade"
+      "place"
+      "lake";
+  }
+}
